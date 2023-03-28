@@ -1,4 +1,3 @@
-
 $(function () {
     const logo = [
         '    _____                      __                   ',
@@ -7,17 +6,25 @@ $(function () {
         '  ___/ /  __/ /  / /_/ /  __/ /___/  __/ /_/ / / / /',
         ' /____/\\___/_/   \\__, /\\___/_____/\\___/\\____/_/ /_/ ',
         '                /____/                              ',
-        '                                    Python Developer'
     ]
 
-    const skills = [
-        
-        'Python',
-        'Django',
-        'Flask',
-        'SQL',
-        'PostgreSQL'
-    ]
+    const items = {
+        'Info': [
+            "Name: Sergey Kravchenko"
+        ],
+        'Technical Skills': [
+            'Python',
+            'Django',
+            'Flask',
+            'SQL',
+            'PostgreSQL'
+        ],
+        'Links': [
+            '[[!;;;;https://github.com/SergeLeon]Github]',
+            '[[!;;;;https://t.me/SergeLeon]Telegram]',
+        ]
+    }
+    const itemsLength = Object.keys(items).length
 
     let animation;
     const delay = time => new Promise(r => setTimeout(r, time));
@@ -27,16 +34,28 @@ $(function () {
         // prompt animation will ensure that cursor is in same line as entered text
         term.clear().set_prompt('');
         for (let line of logo) {
-            await term.typing('enter', 0, line)
-            await delay(50)
+            await term.echo(line)
+            await delay(100)
         }
-        await delay(500)
+        let itemNumber = 0
+        for (let item in items) {
+            itemNumber++
 
-        await term.typing('enter', 0, 'Technical Skills:')
-        await delay(500)
-        for (let skill of skills) {
-            await term.typing('enter', 0, ` - ${skill}`)
-            await delay(50)
+            await delay(500)
+            await term.typing('enter', 0, `${item}:`)
+
+            await delay(500)
+            for (let point of items[item]) {
+                if (point.includes("http")) {
+                    await term.echo(` - ${point}`)
+                }
+                else {
+                    await term.typing('enter', 0, ` - ${point}`)
+                }
+                await delay(50)
+            }
+
+            if (itemNumber != itemsLength) await term.echo('')
         }
 
         // await delay(500);
