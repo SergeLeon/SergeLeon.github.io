@@ -2,13 +2,13 @@ body {
     background: black;
 }
 .trinity-dialog {
-    --size: 1.4;
+    --size: 1.6;
     --background: black;
-    --color: rgba(85, 234, 167, 0.95);
+    --color: #55eaa7f2;
     border: 2px solid var(--color);
     background: var(--background);
     width: 800px;
-    height: 400px;
+    height: 1200px;
     min-height: 100px;
     min-width: 250px;
     max-width: calc(100vw - 40px);
