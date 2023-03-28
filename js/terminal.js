@@ -10,7 +10,7 @@ $(function () {
 
     const items = {
         'Info': [
-            "Name: Sergey Kravchenko"
+            "[[;#55eaa7f2;]Name]: Sergey Kravchenko"
         ],
         'Technical Skills': [
             'Python',
@@ -31,7 +31,6 @@ $(function () {
 
     const animate = async () => {
         animation = true;
-        // prompt animation will ensure that cursor is in same line as entered text
         term.clear().set_prompt('');
         for (let line of logo) {
             await term.echo(line)
@@ -46,12 +45,8 @@ $(function () {
 
             await delay(500)
             for (let point of items[item]) {
-                if (point.includes("http")) {
-                    await term.echo(` - ${point}`)
-                }
-                else {
-                    await term.typing('enter', 0, ` - ${point}`)
-                }
+                    await term.echo(` - [[;#B9EDFF;]${point}]`)
+
                 await delay(50)
             }
 
