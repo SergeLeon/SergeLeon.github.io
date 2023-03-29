@@ -26,11 +26,11 @@ $(function () {
     }
     const itemsLength = Object.keys(items).length
 
-    let animation;
+    // let animation;
     const delay = time => new Promise(r => setTimeout(r, time));
 
     const animate = async () => {
-        animation = true;
+        // animation = true;
         term.clear().set_prompt('');
         for (let line of logo) {
             await term.echo(line)
@@ -57,7 +57,7 @@ $(function () {
         // await term.set_prompt('Wake up, Neo...', { typing: true });
 
         term.set_prompt('');
-        animation = false;
+        // animation = false;
     };
 
     const unasync = function (fn) {
@@ -69,7 +69,9 @@ $(function () {
     const term = $('.terminal').terminal(unasync(animate), {
         prompt: '',
         greetings: false,
-        keydown: () => animation ? false : undefined
+        // keydown: () => animation ? false : undefined
+        keydown: () => false
+
     });
 
     animate();
