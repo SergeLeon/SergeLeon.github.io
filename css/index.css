@@ -3,10 +3,10 @@ body {
 }
 @media screen and (min-width: 500px) {
     :root {
-        --size: 2;
+        --size: 2.2;
     }
 }
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 1000px) {
     :root {
         --size: 1.6;
     }
