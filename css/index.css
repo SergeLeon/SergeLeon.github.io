@@ -6,6 +6,11 @@ body {
         --size: 2.2;
     }
 }
+@media screen and (min-width: 800px) {
+    :root {
+        --size: 1.9;
+    }
+}
 @media screen and (min-width: 1000px) {
     :root {
         --size: 1.6;
