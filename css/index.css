@@ -1,8 +1,17 @@
 body {
     background: black;
 }
+@media screen and (min-width: 500px) {
+    :root {
+        --size: 2;
+    }
+}
+@media screen and (min-width: 620px) {
+    :root {
+        --size: 1.6;
+    }
+}
 .trinity-dialog {
-    --size: 1.6;
     --background: black;
     --color: #55eaa7f2;
     border: 2px solid var(--color);
