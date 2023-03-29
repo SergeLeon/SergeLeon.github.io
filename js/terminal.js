@@ -29,7 +29,8 @@ $(function () {
     // let animation;
     const delay = time => new Promise(r => setTimeout(r, time));
 
-    const animate = async () => {
+    async function animate() {
+        
         // animation = true;
         term.clear().set_prompt('');
         for (let line of logo) {
@@ -39,13 +40,14 @@ $(function () {
         let itemNumber = 0
         for (let item in items) {
             itemNumber++
+            console.log(term.cols())
 
             await delay(500)
             await term.typing('enter', 0, `${item}:`)
 
             await delay(500)
             for (let point of items[item]) {
-                    await term.echo(` - [[;#B9EDFF;]${point}]`)
+                await term.echo(` - [[;#B9EDFF;]${point}]`)
 
                 await delay(50)
             }
@@ -59,6 +61,21 @@ $(function () {
         term.set_prompt('');
         // animation = false;
     };
+
+    async function resizeFont() {
+        let fontSize = parseFloat($('.trinity-dialog').css("--size"))
+        console.log(term.cols())
+
+        while (65 < term.cols()) {
+            fontSize += 0.1
+            console.log(fontSize, term.cols())
+            $('.trinity-dialog').css("--size", `${fontSize}`)
+            term.resize()
+            await delay(0)
+            if (fontSize>2) break
+        }
+        
+    }
 
     const unasync = function (fn) {
         return () => {
@@ -74,6 +91,7 @@ $(function () {
 
     });
 
+    resizeFont()
     animate();
 });
 
