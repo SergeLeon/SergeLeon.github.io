@@ -30,7 +30,6 @@ $(function () {
     const delay = time => new Promise(r => setTimeout(r, time));
 
     async function animate() {
-        
         // animation = true;
         term.clear().set_prompt('');
         for (let line of logo) {
@@ -64,17 +63,27 @@ $(function () {
 
     async function resizeFont() {
         let fontSize = parseFloat($('.trinity-dialog').css("--size"))
-        console.log(term.cols())
+        const cols = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) ? 55 : 70
 
-        while (65 < term.cols()) {
+        console.log(cols, term.cols())
+
+        while (cols < term.cols()) {
             fontSize += 0.1
             console.log(fontSize, term.cols())
             $('.trinity-dialog').css("--size", `${fontSize}`)
             term.resize()
-            await delay(0)
-            if (fontSize>2) break
+            await delay()
+            if (fontSize > 3) break
         }
-        
+        while (cols > term.cols()) {
+            fontSize -= 0.1
+            $('.trinity-dialog').css("--size", `${fontSize}`)
+            term.resize()
+            await delay()
+            console.log(fontSize, term.cols())
+            if (fontSize < 1) break
+        }
+
     }
 
     const unasync = function (fn) {
@@ -91,7 +100,11 @@ $(function () {
 
     });
 
-    resizeFont()
-    animate();
+    async function start() {
+        await resizeFont()
+        animate();
+    }
+
+    start()
 });
 
