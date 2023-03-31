@@ -3,7 +3,7 @@ body {
 }
 
 .trinity-dialog {
-    --size: 1.2;
+    --size: 1;
     --background: black;
     --color: #55eaa7f2;
     border: 2px solid var(--color);
