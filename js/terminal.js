@@ -17,7 +17,8 @@ $(function () {
             'Django',
             'Flask',
             'SQL',
-            'PostgreSQL'
+            'PostgreSQL',
+            'Selenium',
         ],
         'Links': [
             '[[!;;;;https://github.com/SergeLeon]Github]',
