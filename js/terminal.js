@@ -14,11 +14,14 @@ $(function () {
         ],
         'Technical Skills': [
             'Python',
-            'Django',
+            'Django Framework',
+            'Django Rest Framework',
+            'REST AP',
             'Flask',
-            'SQL',
             'PostgreSQL',
             'Selenium',
+            'Celery',
+            'Linux',
         ],
         'Links': [
             '[[!;;;;https://github.com/SergeLeon]Github]',
